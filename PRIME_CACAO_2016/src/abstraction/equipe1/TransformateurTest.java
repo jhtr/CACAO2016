@@ -21,10 +21,15 @@ public class TransformateurTest implements Acteur, ITransformateur {
 	
 	public TransformateurTest(String nom) {
 		this.nom = nom;
+		
 		this.tresorerie = new Indicateur("Tresorerie de "+this.nom, this);
 		Monde.LE_MONDE.ajouterIndicateur(this.tresorerie);
+		this.tresorerie.setValeur(this, 10000);
+		
 		this.stockCacao = new Indicateur("Stock de "+this.nom, this);
 		Monde.LE_MONDE.ajouterIndicateur(this.stockCacao);
+		this.stockCacao.setValeur(this, 0);
+		
 		this.prix = 2500;
 		this.quantiteDemandee = 2000;
 	}

@@ -18,10 +18,15 @@ public class ProducteurTest implements Acteur, IProducteur {
 	
 	public ProducteurTest(String nom) {
 		this.nom = nom;
+		
 		this.tresorerie = new Indicateur("Tresorerie de "+this.nom, this);
 		Monde.LE_MONDE.ajouterIndicateur(this.tresorerie);
+		this.tresorerie.setValeur(this, 0);
+		
 		this.stockCacao = new Indicateur("Stock de "+this.nom, this);
 		Monde.LE_MONDE.ajouterIndicateur(this.stockCacao);
+		this.stockCacao.setValeur(this, 2000);
+		
 		this.quantitesProposees = new HashMap<ITransformateur,Double>();
 	}
 	
