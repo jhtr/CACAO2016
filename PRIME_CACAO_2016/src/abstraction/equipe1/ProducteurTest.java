@@ -53,6 +53,8 @@ public class ProducteurTest implements Acteur, IProducteur {
 	public void notificationVente(CommandeProduc c) {
 		this.stockCacao.setValeur(this, this.stockCacao.getValeur()-c.getQuantite());
 		this.tresorerie.setValeur(this, this.tresorerie.getValeur()+c.getQuantite()*c.getPrixTonne());
+		
+		this.journal.ajouter("Vente de "+c.getQuantite()+" tonnes a "+((Acteur)c.getAcheteur()).getNom()+" au prix unitaire de "+c.getPrixTonne());
 	}
 	
 	public String getNom() {
@@ -62,6 +64,8 @@ public class ProducteurTest implements Acteur, IProducteur {
 	public void next() {
 		//Random random = new Random();
 		this.stockCacao.setValeur(this, this.stockCacao.getValeur()+this.productivite);
+		
+		this.journal.ajouter("Production de "+this.productivite+" tonnes de cacao");
 	}
 	
 	public void ajouterTransformateur(ITransformateur t) {

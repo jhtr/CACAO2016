@@ -51,6 +51,8 @@ public class TransformateurTest implements Acteur, ITransformateur {
 	public void notificationVente(CommandeProduc c) {
 		this.stockCacao.setValeur(this, this.stockCacao.getValeur()+c.getQuantite());
 		this.tresorerie.setValeur(this, this.tresorerie.getValeur()-c.getQuantite()*c.getPrixTonne());
+		
+		this.journal.ajouter("Achat de "+c.getQuantite()+" tonnes a "+((Acteur)c.getVendeur()).getNom()+" au prix unitaire de "+c.getPrixTonne());
 	}
 	
 	public String getNom() {
