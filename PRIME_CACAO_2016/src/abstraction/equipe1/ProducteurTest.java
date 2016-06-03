@@ -2,6 +2,7 @@ package abstraction.equipe1;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import abstraction.commun.CommandeProduc;
 import abstraction.commun.IProducteur;
@@ -16,7 +17,9 @@ public class ProducteurTest implements Acteur, IProducteur {
 	private Indicateur stockCacao;
 	private Map<ITransformateur,Double> quantitesProposees;
 	
-	public ProducteurTest(String nom, double stock) {
+	private Map<ITransformateur,Double> preference;
+	
+	public ProducteurTest(String nom, double stock, Map<ITransformateur,Double> preference) {
 		this.nom = nom;
 		
 		this.tresorerie = new Indicateur("Tresorerie de "+this.nom, this);
@@ -28,6 +31,7 @@ public class ProducteurTest implements Acteur, IProducteur {
 		this.stockCacao.setValeur(this, stock);
 		
 		this.quantitesProposees = new HashMap<ITransformateur,Double>();
+		this.preference = preference;
 	}
 	
 	public double annonceQuantiteMiseEnVente(ITransformateur t) {
@@ -45,7 +49,7 @@ public class ProducteurTest implements Acteur, IProducteur {
 	
 	public void next() {
 		//Random random = new Random();
-		
+		this.stockCacao.setValeur(this, this.stockCacao.getValeur()+1000);
 	}
 	
 	public void ajouterTransformateur(ITransformateur t) {
