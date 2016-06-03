@@ -175,12 +175,14 @@ public class MarcheProducteur implements Acteur {
 	 * seuls les transformateurs qui ne commandent rien ou ceux a qui aucun producteur ne propose de cacao ne seront pas
 	 * dans cette liste.
 	 */
-	private List<Boolean> creerListeAttente() {
-		List<Boolean> resultat = new ArrayList<Boolean>();
+	private List<ITransformateur> creerListeAttente() {
+		List<ITransformateur> attente = new ArrayList<ITransformateur>();
 		for (ITransformateur t : MarcheProducteur.transformateurs) {
-			resultat.add(this.satisfait(t));
+			if (!this.satisfait(t)) {
+				attente.add(t);
+			}
 		}
-		return resultat;
+		return attente;
 	}
 	
 	/**
@@ -239,16 +241,17 @@ public class MarcheProducteur implements Acteur {
 	 * via la methode repartirCommandes. Une fois un transformateur satisfait, il quitte la liste d'attente.
 	 */
 	private void prevoirCommandes() {
-		List<Boolean> attente = creerListeAttente();
+		List<ITransformateur> attente = creerListeAttente();
 		int i = 0;
-		while (attente.contains(false)) {
+		while (attente.size() > 0) {
 			i = 0;
-			while (attente.contains(false) && i < MarcheProducteur.transformateurs.size()) {
-				if (!this.satisfait(MarcheProducteur.transformateurs.get(i))) {
-					this.repartirCommandes(MarcheProducteur.transformateurs.get(i));
-					attente.set(i,this.satisfait(MarcheProducteur.transformateurs.get(i)));
+			while (attente.size() > 0 && i < attente.size()) {
+				this.repartirCommandes(attente.get(i));
+				if (this.satisfait(attente.get(i))) {
+					attente.remove(i);
+				} else {
+					i++;
 				}
-				i++;
 			}
 		}
 	}
