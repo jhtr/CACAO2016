@@ -52,7 +52,7 @@ public class ProducteurTest implements Acteur, IProducteur {
 	
 	public void next() {
 		//Random random = new Random();
-		this.stockCacao.setValeur(this, this.stockCacao.getValeur()+1000);
+		this.stockCacao.setValeur(this, this.stockCacao.getValeur()+3000);
 	}
 	
 	public void ajouterTransformateur(ITransformateur t) {
