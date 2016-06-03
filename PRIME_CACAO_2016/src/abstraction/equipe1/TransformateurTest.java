@@ -1,6 +1,7 @@
 package abstraction.equipe1;
 
 import java.util.List;
+import java.util.Random;
 
 import abstraction.commun.Catalogue;
 import abstraction.commun.CommandeDistri;
@@ -9,6 +10,7 @@ import abstraction.commun.IProducteur;
 import abstraction.commun.ITransformateur;
 import abstraction.fourni.Acteur;
 import abstraction.fourni.Indicateur;
+import abstraction.fourni.Monde;
 
 public class TransformateurTest implements Acteur, ITransformateur {
 	private String nom;
@@ -20,9 +22,11 @@ public class TransformateurTest implements Acteur, ITransformateur {
 	public TransformateurTest(String nom) {
 		this.nom = nom;
 		this.tresorerie = new Indicateur("Tresorerie de "+this.nom, this);
+		Monde.LE_MONDE.ajouterIndicateur(this.tresorerie);
 		this.stockCacao = new Indicateur("Stock de "+this.nom, this);
+		Monde.LE_MONDE.ajouterIndicateur(this.stockCacao);
 		this.prix = 2500;
-		this.quantiteDemandee = 1000;
+		this.quantiteDemandee = 10000;
 	}
 	
 	public double annonceQuantiteDemandee() {
@@ -43,6 +47,7 @@ public class TransformateurTest implements Acteur, ITransformateur {
 	}
 	
 	public void next() {
+		//Random random = new Random();
 		
 	}
 	

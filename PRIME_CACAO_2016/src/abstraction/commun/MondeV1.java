@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import abstraction.commun.Constantes;
 import abstraction.equipe5.Lindt;
 import abstraction.equipe1.Producteur;
-
+import abstraction.equipe1.TransformateurTest;
 import abstraction.equipe3.Leclercv2;
 import abstraction.equipe2.*;
 import abstraction.equipe6.Carrefour;
@@ -39,10 +39,12 @@ public class MondeV1 extends Monde {
 		
 		
 		// Transformateurs
-		Nestle nestle = new Nestle();
+		//Nestle nestle = new Nestle();
+		TransformateurTest nestle = new TransformateurTest("Nestle (test)");
 		this.ajouterActeur(nestle);
 		
-		Lindt lindt = new Lindt();
+		//Lindt lindt = new Lindt();
+		TransformateurTest lindt = new TransformateurTest("Lindt (test)");
 		ajouterActeur(lindt);
 
 		ResteDesTransformateursMondiaux t3 = new ResteDesTransformateursMondiaux();
@@ -74,7 +76,8 @@ public class MondeV1 extends Monde {
 		
 		Ca.ajouterVendeur(nestle);
 		Ca.ajouterVendeur(lindt);
-
+		
+		/*
 		nestle.AjouterClient(Le);
 		nestle.AjouterClient(Ca);
 		nestle.AjouterFournisseur(p1);
@@ -86,7 +89,7 @@ public class MondeV1 extends Monde {
 		lindt.ajouterProducteur(p1);
 		lindt.ajouterProducteur(p2);
 		lindt.creer();
-
+		*/
 		
 		t3.ajouterTransformateur(nestle);
 		t3.ajouterTransformateur(lindt);
