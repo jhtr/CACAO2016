@@ -8,79 +8,89 @@ import abstraction.commun.CommandeProduc;
 import abstraction.commun.IProducteur;
 import abstraction.commun.ITransformateur;
 import abstraction.fourni.Acteur;
+import abstraction.fourni.Indicateur;
 
 public class TransformateurTest implements Acteur, ITransformateur {
-
-	@Override
+	private String nom;
+	private Indicateur tresorerie;
+	private Indicateur stockCacao;
+	private double prix;
+	private double quantiteDemandee;
+	
+	public TransformateurTest(String nom) {
+		this.nom = nom;
+		this.tresorerie = new Indicateur("Tresorerie de "+this.nom, this);
+		this.stockCacao = new Indicateur("Stock de "+this.nom, this);
+		this.prix = 2500;
+		this.quantiteDemandee = 1000;
+	}
+	
 	public double annonceQuantiteDemandee() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.quantiteDemandee;
 	}
-
-	@Override
-	public double annonceQuantiteDemandee(IProducteur p) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
+	
 	public double annoncePrix() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.prix;
 	}
-
+	
+	public void notificationVente(CommandeProduc c) {
+		this.stockCacao.setValeur(this, this.stockCacao.getValeur()+c.getQuantite());
+		this.tresorerie.setValeur(this, this.tresorerie.getValeur()-c.getQuantite()*c.getPrixTonne());
+	}
+	
+	public String getNom() {
+		return this.nom;
+	}
+	
+	public void next() {
+		
+	}
+	
 	@Override
 	public Catalogue getCatalogue() {
 		// TODO Auto-generated method stub
 		return null;
+		// irrelevant
 	}
-
-	@Override
-	public void notificationVente(CommandeProduc c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void notificationVente(IProducteur p) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public List<CommandeDistri> CommandeFinale(List<CommandeDistri> list) {
 		// TODO Auto-generated method stub
 		return null;
+		// irrelevant
 	}
-
+	
 	@Override
 	public List<CommandeDistri> livraisonEffective(List<CommandeDistri> list) {
 		// TODO Auto-generated method stub
 		return null;
+		// irrelevant
 	}
-
+	
 	@Override
 	public List<CommandeDistri> Offre(List<CommandeDistri> o) {
 		// TODO Auto-generated method stub
 		return null;
+		// irrelevant
 	}
-
+	
 	@Override
 	public List<CommandeDistri> offre(List<CommandeDistri> list) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public String getNom() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void next() {
-		// TODO Auto-generated method stub
-		
+		// irrelevant
 	}
 	
+	@Override
+	public double annonceQuantiteDemandee(IProducteur p) {
+		// TODO Auto-generated method stub
+		return 0;
+		// deprecated
+	}
+	
+	@Override
+	public void notificationVente(IProducteur p) {
+		// TODO Auto-generated method stub
+		// deprecated
+	}
 }
