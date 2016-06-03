@@ -1,5 +1,6 @@
 package abstraction.equipe1;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -18,6 +19,7 @@ public class ProducteurTest implements Acteur, IProducteur {
 	private Map<ITransformateur,Double> quantitesProposees;
 	
 	private Map<ITransformateur,Double> preference;
+	private ArrayList<ITransformateur> clients;
 	
 	public ProducteurTest(String nom, double stock, Map<ITransformateur,Double> preference) {
 		this.nom = nom;
@@ -32,10 +34,11 @@ public class ProducteurTest implements Acteur, IProducteur {
 		
 		this.quantitesProposees = new HashMap<ITransformateur,Double>();
 		this.preference = preference;
+		this.clients = new ArrayList<ITransformateur>();
 	}
 	
 	public double annonceQuantiteMiseEnVente(ITransformateur t) {
-		return this.stockCacao.getValeur()/this.quantitesProposees.size();
+		return this.stockCacao.getValeur()*this.preference.get(t);
 	}
 	
 	public void notificationVente(CommandeProduc c) {
@@ -53,6 +56,7 @@ public class ProducteurTest implements Acteur, IProducteur {
 	}
 	
 	public void ajouterTransformateur(ITransformateur t) {
+		this.clients.add(t);
 		this.quantitesProposees.put(t, 0.0);
 	}
 }
