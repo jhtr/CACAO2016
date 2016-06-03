@@ -20,10 +20,10 @@ public class MondeV1 extends Monde {
 	
 	public void peupler() {
 		// Transformateurs
-		TransformateurTest nestle = new TransformateurTest("Nestle (test)");
+		TransformateurTest nestle = new TransformateurTest("Nestle (test)", 1000000, 2500);
 		this.ajouterActeur(nestle);
 		
-		TransformateurTest lindt = new TransformateurTest("Lindt (test)");
+		TransformateurTest lindt = new TransformateurTest("Lindt (test)", 500000, 10000);
 		this.ajouterActeur(lindt);
 
 		/*
@@ -37,10 +37,10 @@ public class MondeV1 extends Monde {
 		this.ajouterActeur(marcheProducteur);
 		
 		// Producteurs
-		ProducteurTest p1 = new ProducteurTest("Afrique de l'Ouest (test)");
+		ProducteurTest p1 = new ProducteurTest("Afrique de l'Ouest (test)", 3000);
 		this.ajouterActeur(p1);
 		
-		ProducteurTest p2 = new ProducteurTest("Asie et Amerique (test)");
+		ProducteurTest p2 = new ProducteurTest("Asie et Amerique (test)", 1000);
 		this.ajouterActeur(p2);
 		
 		// Liens entre les acteurs

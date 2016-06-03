@@ -16,7 +16,7 @@ public class ProducteurTest implements Acteur, IProducteur {
 	private Indicateur stockCacao;
 	private Map<ITransformateur,Double> quantitesProposees;
 	
-	public ProducteurTest(String nom) {
+	public ProducteurTest(String nom, double stock) {
 		this.nom = nom;
 		
 		this.tresorerie = new Indicateur("Tresorerie de "+this.nom, this);
@@ -25,7 +25,7 @@ public class ProducteurTest implements Acteur, IProducteur {
 		
 		this.stockCacao = new Indicateur("Stock de "+this.nom, this);
 		Monde.LE_MONDE.ajouterIndicateur(this.stockCacao);
-		this.stockCacao.setValeur(this, 2000);
+		this.stockCacao.setValeur(this, stock);
 		
 		this.quantitesProposees = new HashMap<ITransformateur,Double>();
 	}
