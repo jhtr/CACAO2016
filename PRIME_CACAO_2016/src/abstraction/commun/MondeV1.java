@@ -65,7 +65,8 @@ public class MondeV1 extends Monde {
 		// Producteurs
 		Producteur p1 = new Producteur(Constantes.NOM_PRODUCTEUR_1, 1000.0, 0.0, Monde.LE_MONDE);
 		this.ajouterActeur(p1);
-		abstraction.equipe4.Producteur p2 = new abstraction.equipe4.Producteur(Monde.LE_MONDE);
+		//abstraction.equipe4.Producteur p2 = new abstraction.equipe4.Producteur(Monde.LE_MONDE);
+		Producteur p2 = new Producteur(Constantes.NOM_PRODUCTEUR_2, 1000.0, 0.0, Monde.LE_MONDE);
 		this.ajouterActeur(p2);
 
 
@@ -98,10 +99,16 @@ public class MondeV1 extends Monde {
 		p1.ajouterTransformateur(lindt);
 		p1.ajouterTransformateur(t3);
 		
+		p2.ajouterTransformateur(nestle);
+		p2.ajouterTransformateur(lindt);
+		p2.ajouterTransformateur(t3);
+		
+		/*
 		p2.ajoutClient(nestle);
 		p2.ajoutClient(lindt);
 		p2.ajoutClient(t3);		
 		p2.AjoutVariableVente();
+		*/
 		
 		marcheProducteur.ajouterProducteur(p1);
 		marcheProducteur.ajouterProducteur(p2);
