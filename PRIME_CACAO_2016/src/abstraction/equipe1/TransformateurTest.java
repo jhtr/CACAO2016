@@ -26,7 +26,7 @@ public class TransformateurTest implements Acteur, ITransformateur {
 		this.stockCacao = new Indicateur("Stock de "+this.nom, this);
 		Monde.LE_MONDE.ajouterIndicateur(this.stockCacao);
 		this.prix = 2500;
-		this.quantiteDemandee = 10000;
+		this.quantiteDemandee = 2000;
 	}
 	
 	public double annonceQuantiteDemandee() {
