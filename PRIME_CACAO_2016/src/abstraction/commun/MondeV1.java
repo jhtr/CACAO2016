@@ -21,10 +21,10 @@ public class MondeV1 extends Monde {
 	
 	public void peupler() {
 		// Transformateurs
-		TransformateurTest t1 = new TransformateurTest("Nestle (test)", 500000, 3000);
+		TransformateurTest t1 = new TransformateurTest("Nestle (test)", 500000, 4000);
 		this.ajouterActeur(t1);
 		
-		TransformateurTest t2 = new TransformateurTest("Lindt (test)", 500000, 2000);
+		TransformateurTest t2 = new TransformateurTest("Lindt (test)", 500000, 1000);
 		this.ajouterActeur(t2);
 
 		/*
@@ -39,15 +39,15 @@ public class MondeV1 extends Monde {
 		
 		// Producteurs
 		HashMap<ITransformateur,Double> prefP1 = new HashMap<ITransformateur,Double>();
-		prefP1.put(t1, 1.0);
-		prefP1.put(t2, 0.0);
+		prefP1.put(t1, 0.25);
+		prefP1.put(t2, 0.75);
 		
 		ProducteurTest p1 = new ProducteurTest("Afrique de l'Ouest (test)", 1000, prefP1, 2000);
 		this.ajouterActeur(p1);
 		
 		HashMap<ITransformateur,Double> prefP2 = new HashMap<ITransformateur,Double>();
-		prefP2.put(t1, 0.0);
-		prefP2.put(t2, 1.0);
+		prefP2.put(t1, 0.75);
+		prefP2.put(t2, 0.25);
 		
 		ProducteurTest p2 = new ProducteurTest("Asie et Amerique (test)", 500, prefP2, 500);
 		this.ajouterActeur(p2);
