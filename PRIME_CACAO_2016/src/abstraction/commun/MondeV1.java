@@ -42,14 +42,14 @@ public class MondeV1 extends Monde {
 		prefP1.put(t1, 1.0);
 		prefP1.put(t2, 0.0);
 		
-		ProducteurTest p1 = new ProducteurTest("Afrique de l'Ouest (test)", 1000, prefP1);
+		ProducteurTest p1 = new ProducteurTest("Afrique de l'Ouest (test)", 1000, prefP1, 2000);
 		this.ajouterActeur(p1);
 		
 		HashMap<ITransformateur,Double> prefP2 = new HashMap<ITransformateur,Double>();
 		prefP2.put(t1, 0.0);
 		prefP2.put(t2, 1.0);
 		
-		ProducteurTest p2 = new ProducteurTest("Asie et Amerique (test)", 500, prefP2);
+		ProducteurTest p2 = new ProducteurTest("Asie et Amerique (test)", 500, prefP2, 500);
 		this.ajouterActeur(p2);
 		
 		// Liens entre les acteurs

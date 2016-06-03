@@ -20,8 +20,9 @@ public class ProducteurTest implements Acteur, IProducteur {
 	
 	private Map<ITransformateur,Double> preference;
 	private ArrayList<ITransformateur> clients;
+	private double productivite;
 	
-	public ProducteurTest(String nom, double stock, Map<ITransformateur,Double> preference) {
+	public ProducteurTest(String nom, double stock, Map<ITransformateur,Double> preference, double productivite) {
 		this.nom = nom;
 		
 		this.tresorerie = new Indicateur("Tresorerie de "+this.nom, this);
@@ -35,6 +36,8 @@ public class ProducteurTest implements Acteur, IProducteur {
 		this.quantitesProposees = new HashMap<ITransformateur,Double>();
 		this.preference = preference;
 		this.clients = new ArrayList<ITransformateur>();
+		
+		this.productivite = productivite;
 	}
 	
 	public double annonceQuantiteMiseEnVente(ITransformateur t) {
@@ -52,7 +55,7 @@ public class ProducteurTest implements Acteur, IProducteur {
 	
 	public void next() {
 		//Random random = new Random();
-		this.stockCacao.setValeur(this, this.stockCacao.getValeur()+1000);
+		this.stockCacao.setValeur(this, this.stockCacao.getValeur()+this.productivite);
 	}
 	
 	public void ajouterTransformateur(ITransformateur t) {
