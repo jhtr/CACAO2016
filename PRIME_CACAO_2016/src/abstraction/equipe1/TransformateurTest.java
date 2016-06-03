@@ -10,6 +10,7 @@ import abstraction.commun.IProducteur;
 import abstraction.commun.ITransformateur;
 import abstraction.fourni.Acteur;
 import abstraction.fourni.Indicateur;
+import abstraction.fourni.Journal;
 import abstraction.fourni.Monde;
 
 public class TransformateurTest implements Acteur, ITransformateur {
@@ -18,6 +19,8 @@ public class TransformateurTest implements Acteur, ITransformateur {
 	private Indicateur stockCacao;
 	private double prix;
 	private double quantiteDemandee;
+	
+	private Journal journal;
 	
 	public TransformateurTest(String nom, double treso, double quantite) {
 		this.nom = nom;
@@ -32,6 +35,9 @@ public class TransformateurTest implements Acteur, ITransformateur {
 		
 		this.prix = 2500;
 		this.quantiteDemandee = quantite;
+		
+		this.journal = new Journal("Journal de "+this.nom);
+		Monde.LE_MONDE.ajouterJournal(this.journal);
 	}
 	
 	public double annonceQuantiteDemandee() {

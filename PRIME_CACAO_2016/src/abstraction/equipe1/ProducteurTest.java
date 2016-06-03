@@ -10,6 +10,7 @@ import abstraction.commun.IProducteur;
 import abstraction.commun.ITransformateur;
 import abstraction.fourni.Acteur;
 import abstraction.fourni.Indicateur;
+import abstraction.fourni.Journal;
 import abstraction.fourni.Monde;
 
 public class ProducteurTest implements Acteur, IProducteur {
@@ -21,6 +22,8 @@ public class ProducteurTest implements Acteur, IProducteur {
 	private Map<ITransformateur,Double> preference;
 	private ArrayList<ITransformateur> clients;
 	private double productivite;
+	
+	private Journal journal;
 	
 	public ProducteurTest(String nom, double stock, Map<ITransformateur,Double> preference, double productivite) {
 		this.nom = nom;
@@ -38,6 +41,9 @@ public class ProducteurTest implements Acteur, IProducteur {
 		this.clients = new ArrayList<ITransformateur>();
 		
 		this.productivite = productivite;
+		
+		this.journal = new Journal("Journal de "+this.nom);
+		Monde.LE_MONDE.ajouterJournal(this.journal);
 	}
 	
 	public double annonceQuantiteMiseEnVente(ITransformateur t) {
